@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>private trackers list</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+   
+<div class="card-container"></div>
+    
+<script>
+    const cardData = [
+        {
+            url: "https://blutopia.cc/",
+            name: "Blutopia",
+            description: "full discs and Remuxes",
+            color: "#0066cc"
+        },
+        {
+            url: "https://www.torrentleech.org/torrents/top/index/added/-1%20day/orderby/completed/order/desc",
+            name: "TorrentLeech",
+            description: "general tracker",
+            color: "#00802b"
+        },
+        {
+            url: "https://filelist.io/browse.php",
+            name: "FileList",
+            description: "general tracker",
+            color: "#264d73"
+        },
+	{
+            url: "https://avistaz.to/torrents",
+            name: "AvistaZ",
+            description: "asian content",
+            color: "#ff6600"
+        },
+        {
+            url: "https://jptv.club/torrents",
+            name: "JPTV",
+            description: "japanese content",
+            color: "#001a4d"
+        },
+        {
+            url: "https://asiancinema.me/torrents",
+            name: "AsianCinema",
+            description: "asian content",
+            color: "#4d004d"
+        },
+	{
+            url: "https://cinemaz.to/torrents",
+            name: "CinemaZ",
+            description: "international movies",
+            color: "#000000"
+        },
+        {
+            url: "https://animetorrents.me/torrents.php",
+            name: "AnimeTorrents",
+            description: "weeb shit",
+            color: "#990000"
+        },
+        {
+            url: "https://hawke.uno/torrents?perPage=25",
+            name: "hawke",
+            description: "x256 encoded movies",
+            color: "#ff8080"
+        },
+	{
+            url: "https://jpopsuki.eu/",
+            name: "JPopsuki",
+            description: "japanese music",
+            color: "#99d6ff"
+        },
+        {
+            url: "https://fearnopeer.com/torrents?perPage=50",
+            name: "FNP",
+            description: "general tracker",
+            color: "#000000"
+        },
+        {
+            url: "https://aither.cc/",
+            name: "Aither",
+            description: "general tracker",
+            color: "#003333"
+        },
+	{
+            url: "https://upload.cx/torrents?perPage=25",
+            name: "ULCX",
+            description: "general tracker, small",
+            color: "#ffffff"
+        },
+        {
+            url: "https://digitalcore.club/movies?cats=2,1,5,6,3,38,4,7&stereoscopic=true#top",
+            name: "DigitalCore",
+            description: "general tracker + 3d movies",
+            color: "#5c85d6"
+        }
+        // Add more card objects as needed
+    ];
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const container = document.querySelector('.card-container');
+
+        cardData.forEach(card => {
+            const cardElement = document.createElement('a');
+            cardElement.setAttribute('href', card.url);
+            cardElement.setAttribute('class', 'card');
+            cardElement.setAttribute('target', '_blank');
+            cardElement.setAttribute('data-color', card.color);
+            cardElement.setAttribute('style', `background-color: ${card.color};`);
+
+            const contentElement = document.createElement('div');
+            contentElement.setAttribute('class', 'card-content');
+
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = card.name;
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.textContent = card.description;
+
+            contentElement.appendChild(titleElement);
+            contentElement.appendChild(descriptionElement);
+
+            cardElement.appendChild(contentElement);
+
+            container.appendChild(cardElement);
+        });
+    });
+</script>
+
+</body>
+</html>
