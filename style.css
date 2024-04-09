@@ -1,3 +1,40 @@
+.search-container {
+    background-color: #121212; /* Dark background */
+    padding: 20px;
+    text-align: center; /* Center the input and button */
+    border-radius: 20px; /* Rounded corners */
+}
+
+.search-container input[type=text] {
+    padding: 15px;
+    width: 50%;
+    border-radius: 30px; /* Rounded corners */
+    border: 2px solid #555; /* Border color */
+    background-color: #444; /* Dark background for input */
+    color: #fff; /* Light text for contrast */
+    font-size: 16px; /* Increase font size */
+}
+
+.search-container input[type=text]:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: #4caf50; /* Change border color on focus */
+}
+
+.search-container button {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 30px; /* Rounded corners */
+    background-color: #3498db; /* Blue background */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px; /* Increase font size */
+}
+
+.search-container button:hover {
+    background-color: #2980b9; /* Darker shade of blue on hover */
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -44,4 +81,12 @@ body {
     margin: 0 auto; /* Center the body horizontally */
     max-width: 1200px; /* Set a maximum width for the body */
     padding: 20px; /* Add padding to the body for spacing */
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff; /* White text */
+    margin-top: 20px;
+    text-shadow: 0 0 5px rgba(52, 152, 219, 0.7), 0 0 10px rgba(52, 152, 219, 0.7), 0 0 15px rgba(52, 152, 219, 0.7); /* Subtle blue glow */
 }

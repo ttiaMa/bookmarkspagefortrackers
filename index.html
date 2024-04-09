@@ -3,110 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>private trackers list</title>
+    <title>multi-website torrent search</title>
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="reloadPage()">Load query into cards</button>
+</div>
+
+<div class="title">private trackers</div>
    
-<div class="card-container"></div>
+<div id="first-card-container" class="card-container"></div>
+
+<div class="title">public trackers</div>
+
+<div id="second-card-container" class="card-container"></div>
     
 <script>
-    const cardData = [
+    function getSearch() {
+        var searchText = document.getElementById("searchInput").value;
+        return searchText;
+    }
+
+    function reloadPage() {
+        location.reload();
+    }	
+
+    const firstSetData = [
         {
-            url: "https://blutopia.cc/",
+            url: "https://blutopia.cc/torrents?view=list&name=" + getSearch(),
             name: "Blutopia",
             description: "full discs and Remuxes",
-            color: "#0066cc"
+            color: "#0066cc",
+	    includeIcon: true 
         },
         {
-            url: "https://www.torrentleech.org/torrents/top/index/added/-1%20day/orderby/completed/order/desc",
+            url: "https://www.torrentleech.org/torrents/browse/index/query/" + getSearch(),
             name: "TorrentLeech",
             description: "general tracker",
-            color: "#00802b"
+            color: "#00802b",
+	    includeIcon: true 
         },
         {
-            url: "https://filelist.io/browse.php",
+            url: "https://filelist.io/browse.php?search=" + getSearch() + "&cat=0&searchin=1&sort=2",
             name: "FileList",
             description: "general tracker",
-            color: "#264d73"
+            color: "#264d73",
+	    includeIcon: true 
         },
 	{
-            url: "https://avistaz.to/torrents",
+            url: "https://avistaz.to/torrents?in=1&search=" + getSearch() + "&type=0&tags=&uploader=",
             name: "AvistaZ",
             description: "asian content",
-            color: "#ff6600"
+            color: "#ff6600",
+	    includeIcon: true 
         },
         {
             url: "https://jptv.club/torrents",
             name: "JPTV",
             description: "japanese content",
-            color: "#001a4d"
+            color: "#001a4d",
+	    includeIcon: false 
         },
         {
             url: "https://asiancinema.me/torrents",
             name: "AsianCinema",
             description: "asian content",
-            color: "#4d004d"
+            color: "#4d004d",
+	    includeIcon: false 
         },
 	{
-            url: "https://cinemaz.to/torrents",
+            url: "https://cinemaz.to/torrents?in=1&search=" + getSearch() + "&type=0&tags=&uploader=",
             name: "CinemaZ",
             description: "international movies",
-            color: "#000000"
+            color: "#000000",
+	    includeIcon: true 
         },
         {
-            url: "https://animetorrents.me/torrents.php",
+            url: "https://animetorrents.me/torrents.php?search=" + getSearch(),
             name: "AnimeTorrents",
             description: "weeb shit",
-            color: "#990000"
+            color: "#990000",
+	    includeIcon: true 
         },
         {
-            url: "https://hawke.uno/torrents?perPage=25",
+            url: "https://hawke.uno/torrents?perPage=25&name=" + getSearch(),
             name: "hawke",
             description: "x256 encoded movies",
-            color: "#ff8080"
+            color: "#ff8080",
+	    includeIcon: true 
         },
 	{
-            url: "https://jpopsuki.eu/",
+            url: "https://jpopsuki.eu/torrents.php?searchstr=" + getSearch(),
             name: "JPopsuki",
             description: "japanese music",
-            color: "#99d6ff"
+            color: "#99d6ff",
+	    includeIcon: true 
         },
         {
-            url: "https://fearnopeer.com/torrents?perPage=50",
+            url: "https://fearnopeer.com/torrents?perPage=50&name=" + getSearch(),
             name: "FNP",
             description: "general tracker",
-            color: "#000000"
+            color: "#000000",
+	    includeIcon: true 
         },
         {
-            url: "https://aither.cc/",
+            url: "https://aither.cc/torrents?view=list&name=" + getSearch(),
             name: "Aither",
             description: "general tracker",
-            color: "#003333"
+            color: "#003333",
+	    includeIcon: true 
         },
 	{
-            url: "https://upload.cx/torrents?perPage=25",
+            url: "https://upload.cx/torrents?perPage=25&name=" + getSearch(),
             name: "ULCX",
             description: "general tracker, small",
-            color: "#ffffff"
+            color: "#ffffff",
+	    includeIcon: true 
         },
         {
-            url: "https://digitalcore.club/movies?cats=2,1,5,6,3,38,4,7&stereoscopic=true#top",
+            url: "https://digitalcore.club/search?search=" + getSearch(),
             name: "DigitalCore",
             description: "general tracker + 3d movies",
-            color: "#5c85d6"
+            color: "#5c85d6",
+	    includeIcon: true 
         }
         // Add more card objects as needed
     ];
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const container = document.querySelector('.card-container');
+const secondSetData = [
+        {
+            url: "https://ext.to/search/?order=size&sort=desc&q=" + getSearch(),
+            name: "EXT",
+            description: "search multiple public trackers",
+            color: "#0066cc",
+	    includeIcon: true 
+        }
+   ];
 
-        cardData.forEach(card => {
+document.addEventListener("DOMContentLoaded", function() {
+    const firstContainer = document.getElementById('first-card-container');
+    const secondContainer = document.getElementById('second-card-container');
+
+    // Function to generate cards
+    function generateCards(container, data) {
+        data.forEach(card => {
             const cardElement = document.createElement('a');
             cardElement.setAttribute('href', card.url);
             cardElement.setAttribute('class', 'card');
@@ -116,6 +164,13 @@
 
             const contentElement = document.createElement('div');
             contentElement.setAttribute('class', 'card-content');
+
+	    if (card.includeIcon) { // Check if the icon should be included
+                 const iconElement = document.createElement('i');
+   		 iconElement.setAttribute('class', 'fas fa-search'); // Font Awesome magnifier icon
+ 	         iconElement.style.color = 'white';
+ 	         contentElement.appendChild(iconElement); // Append the icon to the content
+            }
 
             const titleElement = document.createElement('h3');
             titleElement.textContent = card.name;
@@ -130,7 +185,13 @@
 
             container.appendChild(cardElement);
         });
-    });
+    }
+    // Generate cards for the first set
+    generateCards(firstContainer, firstSetData);
+
+    // Generate cards for the second set
+    generateCards(secondContainer, secondSetData);
+});
 </script>
 
 </body>
