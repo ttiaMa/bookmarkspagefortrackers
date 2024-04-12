@@ -1,18 +1,25 @@
 .search-container {
-    background-color: #121212; /* Dark background */
-    padding: 20px;
-    text-align: center; /* Center the input and button */
-    border-radius: 20px; /* Rounded corners */
+  background-color: #121212;
+  padding: 20px;
+  text-align: center;
+  border-radius: 20px;
+  position: fixed; /* Make it fixed */
+  top: 3em; /* Adjust to position it vertically */
+  left: 50%; /* Adjust to position it horizontally */
+  transform: translate(-50%, -50%); /* Center it within the viewport */
+  width: 100%;
+  z-index: 10;
 }
 
 .search-container input[type=text] {
     padding: 15px;
-    width: 50%;
+    width: 30em;
     border-radius: 30px; /* Rounded corners */
     border: 2px solid #555; /* Border color */
     background-color: #444; /* Dark background for input */
     color: #fff; /* Light text for contrast */
     font-size: 16px; /* Increase font size */
+    margin: 0 5px;
 }
 
 .search-container input[type=text]:focus {
@@ -29,6 +36,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 16px; /* Increase font size */
+    margin: 0 5px;
 }
 
 .search-container button:hover {
@@ -46,7 +54,7 @@
 .card {
     display: block;
     width: calc(25% - 20px); /* Adjusts width for 4 cards per row */
-    height: 200px; /* Adjust height as needed */
+    height: 150px; /* Adjust height as needed */
     text-decoration: none;
     border-radius: 8px;
     overflow: hidden;
