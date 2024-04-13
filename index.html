@@ -43,98 +43,112 @@
             name: "Blutopia",
             description: "full discs and remuxes",
             color: "#0066cc",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: true
         },
         {
             url: "https://www.torrentleech.org/torrents/browse/index/query/" + getSearch(),
             name: "TorrentLeech",
             description: "general tracker",
             color: "#00802b",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: true
         },
         {
             url: "https://filelist.io/browse.php?search=" + getSearch() + "&cat=0&searchin=1&sort=2",
             name: "FileList",
             description: "general tracker",
             color: "#264d73",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: true
         },
 	{
             url: "https://avistaz.to/torrents?in=1&search=" + getSearch() + "&type=0&tags=&uploader=",
             name: "AvistaZ",
             description: "asian content",
             color: "#ff6600",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: false
         },
         {
             url: "https://jptv.club/torrents",
             name: "JPTV",
             description: "japanese content",
             color: "#001a4d",
-	    includeIcon: false 
+	    includeSearchIcon: false,
+	    includeFireIcon: false
         },
         {
             url: "https://asiancinema.me/torrents",
             name: "AsianCinema",
             description: "asian content",
             color: "#4d004d",
-	    includeIcon: false 
+	    includeSearchIcon: false,
+	    includeFireIcon: false
         },
 	{
             url: "https://cinemaz.to/torrents?in=1&search=" + getSearch() + "&type=0&tags=&uploader=",
             name: "CinemaZ",
             description: "international movies",
             color: "#000000",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: false
         },
         {
             url: "https://animetorrents.me/torrents.php?search=" + getSearch(),
             name: "AnimeTorrents",
             description: "weeb shit",
             color: "#990000",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: false
         },
         {
             url: "https://hawke.uno/torrents?perPage=25&name=" + getSearch(),
             name: "hawke",
             description: "x256 encoded movies",
             color: "#ff8080",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: true
         },
 	{
             url: "https://jpopsuki.eu/torrents.php?searchstr=" + getSearch(),
             name: "JPopsuki",
             description: "japanese music",
             color: "#99d6ff",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: false
         },
         {
             url: "https://fearnopeer.com/torrents?perPage=50&name=" + getSearch(),
             name: "FNP",
             description: "general tracker",
             color: "#000000",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: false
         },
         {
             url: "https://aither.cc/torrents?view=list&name=" + getSearch(),
             name: "Aither",
             description: "movies/tv tracker, small",
             color: "#003333",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: false
         },
 	{
             url: "https://upload.cx/torrents?perPage=25&name=" + getSearch(),
             name: "ULCX",
             description: "movies/tv tracker, small",
             color: "#ffffff",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: false
         },
         {
             url: "https://digitalcore.club/search?search=" + getSearch(),
             name: "DigitalCore",
             description: "general tracker + 3d movies",
             color: "#5c85d6",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: false
         }
         // Add more card objects as needed
     ];
@@ -145,7 +159,8 @@ const secondSetData = [
             name: "EXT",
             description: "search multiple public trackers",
             color: "#0066cc",
-	    includeIcon: true 
+	    includeSearchIcon: true,
+	    includeFireIcon: false
         }
    ];
 
@@ -166,12 +181,21 @@ document.addEventListener("DOMContentLoaded", function() {
             const contentElement = document.createElement('div');
             contentElement.setAttribute('class', 'card-content');
 
-	    if (card.includeIcon) { // Check if the icon should be included
+	    if (card.includeSearchIcon) { // Check if the icon should be included
                  const iconElement = document.createElement('i');
    		 iconElement.setAttribute('class', 'fas fa-search'); // Font Awesome magnifier icon
  	         iconElement.style.color = 'white';
  	         contentElement.appendChild(iconElement); // Append the icon to the content
             }
+
+		// Include Fire Icon if specified
+       if (card.includeFireIcon) {
+       	     const fireIconElement = document.createElement('y');
+      	      fireIconElement.setAttribute('class', 'fas fa-fire'); // Font Awesome fire icon
+            fireIconElement.style.color = 'orange';
+            fireIconElement.style.marginLeft = '8px'; // Spacing between icons
+            contentElement.appendChild(fireIconElement);
+        }
 
             const titleElement = document.createElement('h3');
             titleElement.textContent = card.name;
@@ -197,13 +221,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Function to open all movie links at once
 
-function openURLsInNewPageWithTags(container, tags) {
+function openURLsInNewPageWithIcons(container) {
     const cardElements = container.querySelectorAll('.card');
     const urlsToOpen = [];
 
     cardElements.forEach(cardElement => {
-        const description = cardElement.querySelector('.card-content p').textContent.toLowerCase();
-        if (tags.some(tag => description.includes(tag.toLowerCase()))) {
+        const includeFireIcon = cardElement.querySelector('y') // get bolean value
+
+        if (includeFireIcon) {
             const url = cardElement.href;
             if (!urlsToOpen.includes(url)) {
                 urlsToOpen.push(url);
@@ -224,8 +249,8 @@ function openURLsInNewPageWithTags(container, tags) {
 }
 
 function openURLsInNewPage() {
-        openURLsInNewPageWithTags(document.getElementById('second-card-container'), ['multiple']);
-	openURLsInNewPageWithTags(document.getElementById('first-card-container'), ['movies', 'general']);
+        openURLsInNewPageWithIcons(document.getElementById('second-card-container'));
+	openURLsInNewPageWithIcons(document.getElementById('first-card-container'));
     }
 
 </script>
