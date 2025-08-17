@@ -41,8 +41,24 @@
         {
             url: "https://blutopia.cc/torrents?view=list&name=" + getSearch(),
             name: "Blutopia",
-            description: "full discs and remuxes",
+            description: "movies/tv, lots of full discs and remuxes",
             color: "#0066cc",
+	    includeSearchIcon: true,
+	    includeFireIcon: true
+        },
+        {
+            url: "https://aither.cc/torrents?view=list&name=" + getSearch(),
+            name: "Aither",
+            description: "rising movies/tv tracker",
+            color: "#003333",
+	    includeSearchIcon: true,
+	    includeFireIcon: true
+        },
+        {
+            url: "https://hawke.uno/torrents?perPage=25&name=" + getSearch(),
+            name: "hawke",
+            description: "crispy x256 encoded movies",
+            color: "#ff8080",
 	    includeSearchIcon: true,
 	    includeFireIcon: true
         },
@@ -54,15 +70,7 @@
 	    includeSearchIcon: true,
 	    includeFireIcon: true
         },
-        {
-            url: "https://filelist.io/browse.php?search=" + getSearch() + "&cat=0&searchin=1&sort=2",
-            name: "FileList",
-            description: "general tracker",
-            color: "#264d73",
-	    includeSearchIcon: true,
-	    includeFireIcon: false
-        },
-	{
+	    {
             url: "https://avistaz.to/torrents?in=1&search=" + getSearch() + "&type=0&tags=&uploader=",
             name: "AvistaZ",
             description: "asian content",
@@ -70,15 +78,7 @@
 	    includeSearchIcon: true,
 	    includeFireIcon: false
         },
-        {
-            url: "https://eiga.moi/",
-            name: "AsianCinema",
-            description: "asian content",
-            color: "#4d004d",
-	    includeSearchIcon: false,
-	    includeFireIcon: false
-        },
-	{
+    	{
             url: "https://cinemaz.to/torrents?in=1&search=" + getSearch() + "&type=0&tags=&uploader=",
             name: "CinemaZ",
             description: "international movies",
@@ -95,17 +95,17 @@
 	    includeFireIcon: false
         },
         {
-            url: "https://hawke.uno/torrents?perPage=25&name=" + getSearch(),
-            name: "hawke",
-            description: "x256 encoded movies",
-            color: "#ff8080",
-	    includeSearchIcon: true,
-	    includeFireIcon: true
+            url: "https://eiga.moi/",
+            name: "AsianCinema",
+            description: "asian content",
+            color: "#4d004d",
+	    includeSearchIcon: false,
+	    includeFireIcon: false
         },
-	{
+    	{
             url: "https://jpopsuki.eu/torrents.php?searchstr=" + getSearch(),
             name: "JPopsuki",
-            description: "japanese music",
+            description: "asian music",
             color: "#99d6ff",
 	    includeSearchIcon: true,
 	    includeFireIcon: false
@@ -118,6 +118,22 @@
 	    includeSearchIcon: true,
 	    includeFireIcon: false
         },
+    	{
+            url: "https://www.myanonamouse.net/tor/browse.php?tor%5Btext%5D=" + getSearch(),
+            name: "MyAnonaMouse",
+            description: "books and audiobooks",
+            color: "#372816",
+	    includeSearchIcon: true,
+	    includeFireIcon: false
+        },
+        {
+            url: "https://filelist.io/browse.php?search=" + getSearch() + "&cat=0&searchin=1&sort=2",
+            name: "FileList",
+            description: "general tracker",
+            color: "#264d73",
+	    includeSearchIcon: true,
+	    includeFireIcon: false
+        },
         {
             url: "https://fearnopeer.com/torrents?perPage=50&name=" + getSearch(),
             name: "FNP",
@@ -126,27 +142,11 @@
 	    includeSearchIcon: true,
 	    includeFireIcon: false
         },
-        {
-            url: "https://aither.cc/torrents?view=list&name=" + getSearch(),
-            name: "Aither",
-            description: "movies/tv tracker, small",
-            color: "#003333",
-	    includeSearchIcon: true,
-	    includeFireIcon: true
-        },
-	{
+    	{
             url: "https://upload.cx/torrents?perPage=25&name=" + getSearch(),
             name: "ULCX",
             description: "movies/tv tracker, small",
             color: "#ffffff",
-	    includeSearchIcon: true,
-	    includeFireIcon: false
-        },
-	{
-            url: "https://www.myanonamouse.net/tor/browse.php?tor%5Btext%5D=" + getSearch(),
-            name: "MyAnonaMouse",
-            description: "books and audiobooks",
-            color: "#372816",
 	    includeSearchIcon: true,
 	    includeFireIcon: false
         },
@@ -158,10 +158,10 @@
 	    includeSearchIcon: true,
 	    includeFireIcon: false
         },
-	{
+	    {
             url: "https://itatorrents.xyz/torrents?view=list&name=" + getSearch(),
             name: "ITATorrents",
-            description: "italian tracker",
+            description: "italian tracker for movies/tv",
             color: "#947fb5",
 	    includeSearchIcon: true,
 	    includeFireIcon: false
