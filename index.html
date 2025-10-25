@@ -200,7 +200,15 @@
         }
     ];
 
-const secondSetData = [
+const secondSetData = [ 
+    {
+            url: "https://ext.to/browse/?q=" + getSearch(),
+            name: "1337x.to",
+            description: "public trackers indexer",
+            color: "#188FF3",
+	    includeSearchIcon: true,
+	    includeFireIcon: false
+        },
 	{
             url: "https://nyaa.si/?f=0&c=0_0&q=" + getSearch(),
             name: "nyaa.si",
@@ -209,6 +217,14 @@ const secondSetData = [
 	    includeSearchIcon: true,
 	    includeFireIcon: false
         },
+    {
+            url: "https://1337x.to/search/" + getSearch() + "/1/",
+            name: "1337x.to",
+            description: "general tracker",
+            color: "#E8693D",
+	    includeSearchIcon: true,
+	    includeFireIcon: false
+        }, 
 	{
             url: "https://milkie.cc/browse?query=" + getSearch() + "&oby=created_at&odir=desc&pi=0&ps=50",
             name: "milkie",
