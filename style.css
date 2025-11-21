@@ -4,7 +4,7 @@
   text-align: center;
   border-radius: 20px;
   position: fixed; /* Make it fixed */
-  top: 3em; /* Adjust to position it vertically */
+  top: 2.7em; /* Adjust to position it vertically */
   left: 50%; /* Adjust to position it horizontally */
   transform: translate(-50%, -50%); /* Center it within the viewport */
   width: 100%;
@@ -20,6 +20,8 @@
     color: #fff; /* Light text for contrast */
     font-size: 16px; /* Increase font size */
     margin: 0 5px;
+
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
 }
 
 .search-container input[type=text]:focus {
@@ -34,54 +36,58 @@
     background-color: #3498db; /* Blue background */
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
     font-size: 16px; /* Increase font size */
     margin: 0 5px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
 }
 
 .search-container button:hover {
-    background-color: #2980b9; /* Darker shade of blue on hover */
+    background-color: #2980b9;
+    transform: scale(1.05); 
 }
 
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 10px; /* Reduced gap */
+    justify-content: center; 
+    gap: 17px; 
     padding: 20px;
 }
 
 .card {
     display: block;
-    width: calc(25% - 20px); /* Adjusts width for 4 cards per row */
-    height: 150px; /* Adjust height as needed */
+    width: 260px; 
+    flex-grow: 1;
+    max-width: 300px;
+    
+    height: 150px;
     text-decoration: none;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
     background-size: cover;
     background-position: center;
-    transition: transform 0.2s; /* Smooth transition for hover effect */
+    transition: transform 0.2s;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3); 
 }
 
 .card-content {
     position: absolute;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
+    background: rgba(0, 0, 0, 0.7); 
     width: 100%;
     padding: 10px;
 }
 
 .card-content h3, .card-content p {
     margin: 5px 0;
-    color: white; /* Ensure text is readable on dark background */
+    color: white; 
 }
 
 .card:hover {
-    transform: scale(1.05); /* Slight scale up on hover */
+    transform: scale(1.05);
 }
-
-/* The rest of your CSS */
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -97,4 +103,56 @@ body {
     color: #ffffff; /* White text */
     margin-top: 20px;
     text-shadow: 0 0 5px rgba(52, 152, 219, 0.7), 0 0 10px rgba(52, 152, 219, 0.7), 0 0 15px rgba(52, 152, 219, 0.7); /* Subtle blue glow */
+}
+
+#openUrlsButton {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 16px;
+  margin: 0 5px;
+  
+  background-color: #ff6666;
+  font-style: italic;
+  position: relative; 
+}
+
+#openUrlsButton::after {
+  content: attr(data-tooltip); 
+
+  position: absolute;
+  top: 120%; 
+  left: 50%;
+  transform: translateX(-50%); 
+  
+  background-color: #333; 
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-style: normal; 
+  white-space: pre-wrap; 
+  width: max-content;
+  max-width: 250px; 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  z-index: 100;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, top 0.3s;
+  pointer-events: none; 
+}
+
+#openUrlsButton:hover {
+  background-color: #e04d4d;
+  transform: scale(1.05);
+}
+
+#openUrlsButton:hover::after {
+  opacity: 1;
+  visibility: visible;
+  top: 130%; 
 }
