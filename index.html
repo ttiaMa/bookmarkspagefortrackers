@@ -42,34 +42,37 @@
 
     const firstSetData = [
         {
-            url: "https://blutopia.cc/torrents?view=list&name=" + getSearch(),
-            name: "Blutopia",
-            description: "movies/tv, lots of full discs",
-            color: "#0066cc",
-	    includeSearchIcon: true,
-	    includeFireIcon: true
-        },
-        {
             url: "https://aither.cc/torrents?view=list&name=" + getSearch(),
             name: "Aither",
+            internals: "Kitsune,  ATELiER, NAN0",
             description: "rising movies/tv tracker",
             color: "#003333",
 	    includeSearchIcon: true,
 	    includeFireIcon: true
         },
         {
+            url: "https://blutopia.cc/torrents?view=list&name=" + getSearch(),
+            name: "Blutopia",
+            internals: "BLURANiUM, ZoroSenpai",
+            description: "movies/tv, lots of full discs",
+            color: "#0066cc",
+	    includeSearchIcon: true,
+	    includeFireIcon: true
+        },
+        {
             url: "https://hawke.uno/torrents?perPage=25&name=" + getSearch(),
             name: "hawke",
+            internals: "HONE",
             description: "crispy x265 encodes",
             color: "#ff8080",
 	    includeSearchIcon: true,
 	    includeFireIcon: true
         },
         {
-            url: "https://www.torrentleech.org/torrents/browse/index/query/" + getSearch(),
-            name: "TorrentLeech",
-            description: "general tracker",
-            color: "#00802b",
+            url: "https://seedpool.org/torrents?name=" + getSearch(),
+            name: "Seedpool",
+            description: "rising general tracker",
+            color: "#3e3db4",
 	    includeSearchIcon: true,
 	    includeFireIcon: false
         },
@@ -148,6 +151,7 @@
         {
             url: "https://filelist.io/browse.php?search=" + getSearch() + "&cat=0&searchin=1&sort=2",
             name: "FileList",
+            internals: "playWEB",
             description: "general tracker",
             color: "#264d73",
 	    includeSearchIcon: true,
@@ -164,7 +168,8 @@
     	{
             url: "https://upload.cx/torrents?perPage=25&name=" + getSearch(),
             name: "ULCX",
-            description: "movies/tv tracker, small",
+            internals:"BLOOM",
+            description: "movies/tv tracker",
             color: "#ffffff",
 	    includeSearchIcon: true,
 	    includeFireIcon: false
@@ -178,17 +183,17 @@
 	    includeFireIcon: false
         },
         {
-            url: "https://seedpool.org/torrents?name=" + getSearch(),
-            name: "Seedpool",
-            description: "0day content",
-            color: "#3e3db4",
+            url: "https://www.torrentleech.org/torrents/browse/index/query/" + getSearch(),
+            name: "TorrentLeech",
+            description: "general tracker",
+            color: "#00802b",
 	    includeSearchIcon: true,
 	    includeFireIcon: false
         },
         {
             url: "https://lst.gg/torrents?name=" + getSearch(),
             name: "LST",
-            description: "general tracker with av1 encodes",
+            description: "general tracker with gambling",
             color: "#1F2A31",
 	    includeSearchIcon: true,
 	    includeFireIcon: false
@@ -282,27 +287,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const firstContainer = document.getElementById('first-card-container');
     const secondContainer = document.getElementById('second-card-container');
 
-    // Function to generate cards
-        function generateCards(container, data) {
-        // Get the current value of the search bar
+function generateCards(container, data) {
+        // Get current search value
         const currentSearch = document.getElementById("searchInput").value;
 
         data.forEach(card => {
             const cardElement = document.createElement('a');
-
+            
+            // --- LOGIC: Handle Empty Search (Go to main domain) ---
             let finalUrl = card.url;
-
-            // If search box is empty (or just whitespace), use the site's main domain (origin)
             if (!currentSearch || currentSearch.trim() === "") {
                 try {
-                    // new URL() parses the string, .origin gives you "https://site.com"
                     finalUrl = new URL(card.url).origin;
                 } catch (error) {
                     console.error("Could not parse URL for " + card.name);
                 }
             }
-            
             cardElement.setAttribute('href', finalUrl);
+            // ------------------------------------------------------
+
             cardElement.setAttribute('class', 'card');
             cardElement.setAttribute('target', '_blank');
             cardElement.setAttribute('data-color', card.color);
@@ -311,23 +314,41 @@ document.addEventListener("DOMContentLoaded", function() {
             const contentElement = document.createElement('div');
             contentElement.setAttribute('class', 'card-content');
 
-            if (card.includeSearchIcon) { 
+            // Add Search Icon
+            if (card.includeSearchIcon) {
                  const iconElement = document.createElement('i');
-                 iconElement.setAttribute('class', 'fas fa-search'); 
+                 iconElement.setAttribute('class', 'fas fa-search');
                  iconElement.style.color = 'white';
-                 contentElement.appendChild(iconElement); 
+                 contentElement.appendChild(iconElement);
             }
 
+            // Add Fire Icon
             if (card.includeFireIcon) {
-                 const fireIconElement = document.createElement('y'); // Note: 'y' is not a standard HTML tag, usually this should be 'i' or 'span', but I left it as per your code
-                 fireIconElement.setAttribute('class', 'fas fa-fire'); 
+                 const fireIconElement = document.createElement('y'); 
+                 fireIconElement.setAttribute('class', 'fas fa-fire');
                  fireIconElement.style.color = 'orange';
-                 fireIconElement.style.marginLeft = '8px'; 
+                 fireIconElement.style.marginLeft = '8px';
                  contentElement.appendChild(fireIconElement);
             }
 
             const titleElement = document.createElement('h3');
-            titleElement.textContent = card.name;
+            // Add the main name as a text node
+            titleElement.appendChild(document.createTextNode(card.name));
+
+            // --- LOGIC: Handle "internals" Field ---
+            if (card.internals) {
+                const internalspan = document.createElement('span');
+                internalspan.textContent = card.internals;
+                
+                // Styling for the smaller font
+                internalspan.style.fontSize = "0.6em"; 
+                internalspan.style.marginLeft = "8px"; 
+                internalspan.style.opacity = "0.8"; // Make it slightly transparent
+                internalspan.style.fontWeight = "400"; // Less bold
+                
+                titleElement.appendChild(internalspan);
+            }
+            // ---------------------------------------
 
             const descriptionElement = document.createElement('p');
             descriptionElement.textContent = card.description;
