@@ -283,10 +283,26 @@ document.addEventListener("DOMContentLoaded", function() {
     const secondContainer = document.getElementById('second-card-container');
 
     // Function to generate cards
-    function generateCards(container, data) {
+        function generateCards(container, data) {
+        // Get the current value of the search bar
+        const currentSearch = document.getElementById("searchInput").value;
+
         data.forEach(card => {
             const cardElement = document.createElement('a');
-            cardElement.setAttribute('href', card.url);
+
+            let finalUrl = card.url;
+
+            // If search box is empty (or just whitespace), use the site's main domain (origin)
+            if (!currentSearch || currentSearch.trim() === "") {
+                try {
+                    // new URL() parses the string, .origin gives you "https://site.com"
+                    finalUrl = new URL(card.url).origin;
+                } catch (error) {
+                    console.error("Could not parse URL for " + card.name);
+                }
+            }
+            
+            cardElement.setAttribute('href', finalUrl);
             cardElement.setAttribute('class', 'card');
             cardElement.setAttribute('target', '_blank');
             cardElement.setAttribute('data-color', card.color);
@@ -295,21 +311,20 @@ document.addEventListener("DOMContentLoaded", function() {
             const contentElement = document.createElement('div');
             contentElement.setAttribute('class', 'card-content');
 
-	    if (card.includeSearchIcon) { // Check if the icon should be included
+            if (card.includeSearchIcon) { 
                  const iconElement = document.createElement('i');
-   		 iconElement.setAttribute('class', 'fas fa-search'); // Font Awesome magnifier icon
- 	         iconElement.style.color = 'white';
- 	         contentElement.appendChild(iconElement); // Append the icon to the content
+                 iconElement.setAttribute('class', 'fas fa-search'); 
+                 iconElement.style.color = 'white';
+                 contentElement.appendChild(iconElement); 
             }
 
-		// Include Fire Icon if specified
-       if (card.includeFireIcon) {
-       	     const fireIconElement = document.createElement('y');
-      	      fireIconElement.setAttribute('class', 'fas fa-fire'); // Font Awesome fire icon
-            fireIconElement.style.color = 'orange';
-            fireIconElement.style.marginLeft = '8px'; // Spacing between icons
-            contentElement.appendChild(fireIconElement);
-        }
+            if (card.includeFireIcon) {
+                 const fireIconElement = document.createElement('y'); // Note: 'y' is not a standard HTML tag, usually this should be 'i' or 'span', but I left it as per your code
+                 fireIconElement.setAttribute('class', 'fas fa-fire'); 
+                 fireIconElement.style.color = 'orange';
+                 fireIconElement.style.marginLeft = '8px'; 
+                 contentElement.appendChild(fireIconElement);
+            }
 
             const titleElement = document.createElement('h3');
             titleElement.textContent = card.name;
@@ -325,6 +340,7 @@ document.addEventListener("DOMContentLoaded", function() {
             container.appendChild(cardElement);
         });
     }
+
     // Generate cards for the first set
     generateCards(firstContainer, firstSetData);
 
