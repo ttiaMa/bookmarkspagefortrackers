@@ -89,6 +89,15 @@
 	        includeSearchIcon: true,
 	        includeFireIcon: false
         },
+        {
+            url: "https://eiga.moi/",
+            name: "AsianCinema",
+            shortcut:"ACM",
+            description: "asian content",
+            color: "#7209B7",
+	        includeSearchIcon: false,
+	        includeFireIcon: false
+        },
     	{
             url: "https://cinemaz.to/torrents?in=1&search=" + getSearch() + "&type=0&tags=&uploader=",
             name: "CinemaZ",
@@ -99,21 +108,12 @@
 	        includeFireIcon: false
         },
         {
-            url: "https://animetorrents.me/torrents.php?search=" + getSearch(),
-            name: "AnimeTorrents",
-            shortcut:"AT",
-            description: "weeb shit",
-            color: "#C1121F",
+            url: "https://secret-cinema.pw/torrents.php?groupname=" + getSearch(),
+            name: "Secret Cinema",
+            shortcut:"SC",
+            description: "non-mainstream movies",
+            color: "#4e4e4e",
 	        includeSearchIcon: true,
-	        includeFireIcon: false
-        },
-        {
-            url: "https://eiga.moi/",
-            name: "AsianCinema",
-            shortcut:"ACM",
-            description: "asian content",
-            color: "#7209B7",
-	        includeSearchIcon: false,
 	        includeFireIcon: false
         },
         {
@@ -153,25 +153,24 @@
 	        includeFireIcon: false
         },
         {
-            url: "https://filelist.io/browse.php?search=" + getSearch() + "&cat=0&searchin=1&sort=2",
-            name: "FileList",
-            shortcut:"FL",
-            internals: "playWEB",
-            description: "general tracker",
-            color: "#264d73",
+            url: "https://animebytes.vt/torrents.php?search=" + getSearch(),
+            name: "AnimeBytes",
+            shortcut:"AB",
+            description: "weeb shit",
+            color: "#EC0F69",
 	        includeSearchIcon: true,
 	        includeFireIcon: false
         },
         {
-            url: "https://fearnopeer.com/torrents?perPage=50&name=" + getSearch(),
-            name: "FearNoPeer",
-            shortcut:"FNP",
-            description: "general tracker",
-            color: "#1e6d7c",
+            url: "https://animetorrents.me/torrents.php?search=" + getSearch(),
+            name: "AnimeTorrents",
+            shortcut:"AT",
+            description: "weeb shit",
+            color: "#C1121F",
 	        includeSearchIcon: true,
 	        includeFireIcon: false
         },
-    	{
+        {
             url: "https://upload.cx/torrents?perPage=25&name=" + getSearch(),
             name: "upload.cx",
             shortcut:"UCLX",
@@ -182,11 +181,12 @@
 	        includeFireIcon: false
         },
         {
-            url: "https://digitalcore.club/search?search=" + getSearch(),
-            name: "DigitalCore",
-            shortcut:"DC",
+            url: "https://filelist.io/browse.php?search=" + getSearch() + "&cat=0&searchin=1&sort=2",
+            name: "FileList",
+            shortcut:"FL",
+            internals: "playWEB",
             description: "general tracker",
-            color: "#9b9b9b",
+            color: "#264d73",
 	        includeSearchIcon: true,
 	        includeFireIcon: false
         },
@@ -200,6 +200,24 @@
 	        includeFireIcon: false
         },
         {
+            url: "https://fearnopeer.com/torrents?perPage=50&name=" + getSearch(),
+            name: "FearNoPeer",
+            shortcut:"FNP",
+            description: "general tracker",
+            color: "#1e6d7c",
+	        includeSearchIcon: true,
+	        includeFireIcon: false
+        },
+        {
+            url: "https://digitalcore.club/search?search=" + getSearch(),
+            name: "DigitalCore",
+            shortcut:"DC",
+            description: "general tracker",
+            color: "#9b9b9b",
+	        includeSearchIcon: true,
+	        includeFireIcon: false
+        },
+        {
             url: "https://lst.gg/torrents?name=" + getSearch(),
             name: "LST",
             shortcut:"LST",
@@ -208,6 +226,15 @@
 	        includeSearchIcon: true,
 	        includeFireIcon: false
         },
+        /*{
+            url: "https://onlyencodes.cc/torrents?name=" + getSearch(),
+            name: "OnlyEncodes",
+            shortcut:"OE",
+            description: "encodes, duh",
+            color: "#FEAB32",
+	        includeSearchIcon: true,
+	        includeFireIcon: false
+        },*/
 	    {
             url: "https://shareisland.org/torrents?name=" + getSearch(),
             name: "ShareIsland",
